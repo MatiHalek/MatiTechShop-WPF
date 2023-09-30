@@ -1,0 +1,99 @@
+﻿<Page x:Class="MatiTechShop.MainPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatiTechShop"
+        mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
+        Title="Kategorie produktów"  x:Name="mainWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:Header/>
+        <Grid Grid.Row="1" Style="{StaticResource PageAnimation}" Background="#DCDCDC">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20" MaxWidth="1250">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Kategorie produktów" FontSize="25" FontFamily="{StaticResource Lexend}" FontWeight="Bold" TextWrapping="Wrap"/>
+                        <Button Click="Button_Click_Add" x:Name="btnAdd" Visibility="Collapsed" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Background="DodgerBlue" FontSize="17" FontWeight="Bold" Padding="10, 5" FontFamily="{StaticResource Lexend}" BorderThickness="0" Foreground="White" Grid.Column="1">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="Images/round_create_white_24dp.png" Width="20" />
+                                    <TextBlock Text="Dodaj"/>
+                                </StackPanel>
+                            </Button.Content>
+                            <Button.ToolTip>
+                                <ToolTip Template="{StaticResource tooltip}" Content="Wyświetla okno z możliwością dodania nowej kategorii"/>
+                            </Button.ToolTip>
+                        </Button>
+                    </Grid>
+                    <Grid HorizontalAlignment="Right" Margin="0, 10" Visibility="Hidden" x:Name="editMode">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox VerticalAlignment="Center" x:Name="checkbox"/>
+                        <TextBlock Text="Tryb edycji" Cursor="Hand" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" FontSize="15" Margin="5, 0, 0, 0" Foreground="DarkSlateGray" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"/>
+                    </Grid>
+                    <ItemsControl ItemsSource="{Binding Path=CategoryList, UpdateSourceTrigger=PropertyChanged}" x:Name="test">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="4" MaxWidth="1200" SizeChanged="UniformGrid_SizeChanged"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Cursor="Hand" Height="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth}" Margin="5" Background="White" Padding="2" VerticalContentAlignment="Stretch" Tag="{Binding Id}" Click="Button_Click">
+                                    <Button.ContextMenu>
+                                        <ContextMenu FontFamily="{StaticResource Lexend}" FontSize="15" Padding="5" Foreground="Red" FontWeight="Bold" Margin="3" VerticalAlignment="Center" Visibility="Collapsed">
+                                            <MenuItem Header="Usuń tę kategorię" x:Name="deleteCategory" Click="DeleteCategory_Click" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" Loaded="DeleteCategory_Loaded">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Images/delete.png"/>
+                                                </MenuItem.Icon>
+                                                <MenuItem.ToolTip>
+                                                    <ToolTip Template="{StaticResource tooltip}" Content="Usuwa wybraną kategorię wraz z produktami należącymi tylko do tej kategorii"/>
+                                                </MenuItem.ToolTip>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="5"/>
+                                        </Style>
+                                    </Button.Resources>
+                                    <Button.Content>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="{Binding Path=Image}" Grid.Row="0" Stretch="UniformToFill"/>
+                                            <TextBlock Text="{Binding Path=Name}" Grid.Row="1" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Typography.Capitals="AllPetiteCaps" HorizontalAlignment="Center" TextWrapping="Wrap" />
+                                            <TextBlock Text="{Binding Path=Count, StringFormat=(\{0\})}" Grid.Row="2" HorizontalAlignment="Center" FontSize="16" Foreground="Gray" VerticalAlignment="Center" Padding="5"/>
+                                        </Grid>
+                                    </Button.Content>
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="20" ShadowDepth="2" Color="Gray"/>
+                                    </Button.Effect>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        
+    </Grid>
+</Page>

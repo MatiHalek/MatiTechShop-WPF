@@ -1,0 +1,32 @@
+﻿<Application x:Class="MatiTechShop.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MatiTechShop"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/PageAnimation.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <FontFamily x:Key="Lexend">pack://application:,,,/Fonts/#Lexend</FontFamily>
+            <ControlTemplate x:Key="tooltip" TargetType="ToolTip">
+                <Border CornerRadius="5" Background="#B000">
+                    <Label Content="{TemplateBinding Content}" Foreground="White"/>
+                </Border>
+            </ControlTemplate>
+            <Style x:Key="Font" TargetType="{x:Type TextBlock}">
+                    <Setter Property="FontFamily" Value="{StaticResource Lexend}"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+                </Style>
+            <Style TargetType="TextBlock" x:Key="HoverUnderline">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

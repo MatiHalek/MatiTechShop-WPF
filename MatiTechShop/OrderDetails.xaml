@@ -1,0 +1,54 @@
+﻿<Window x:Class="MatiTechShop.OrderDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatiTechShop"
+        mc:Ignorable="d" Title="Szczegóły zamówienia - MatiTechShop" Height="350" Width="400" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Margin="10" VerticalScrollBarVisibility="Auto">
+            <StackPanel >
+                <TextBlock x:Name="header" Foreground="DodgerBlue" FontSize="25" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                <StackPanel x:Name="stackPanel" Margin="5">
+                    <TextBlock Text="Szczegóły zamówienia:" FontSize="18" FontWeight="Bold" Margin="0, 8"/>
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Status zamówienia:" FontSize="18" FontWeight="Bold" Margin="0, 8"/>
+                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left">
+                        <ComboBoxItem Content="Zarejestrowano dane przesyłki"/>
+                        <ComboBoxItem Content="Przesyłka odebrana przez kuriera"/>
+                        <ComboBoxItem Content="Przesyłka przyjęta w oddziale"/>
+                        <ComboBoxItem Content="Przekazano do doręczenia"/>
+                        <ComboBoxItem Content="Przesyłka doręczona"/>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <Button Content="Zatwierdź" IsDefault="True" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="8" Margin="4" FontSize="18" FontWeight="Bold" Width="100" FontFamily="Arial" Background="Green" BorderBrush="LawnGreen" Foreground="White" Click="Button_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="14" ShadowDepth="8" Color="#CCC"/>
+                </Button.Effect>
+            </Button>
+            <Button Content="Anuluj" IsCancel="True" Cursor="Hand" Padding="8" Margin="4" FontSize="18" FontWeight="Bold" Width="100" FontFamily="Arial" Background="Red" BorderBrush="Orange" Foreground="White" Click="Button_Click_Cancel">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="14" ShadowDepth="8" Color="#CCC"/>
+                </Button.Effect>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,202 @@
+﻿<Page x:Class="MatiTechShop.ProductDetails"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MatiTechShop"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductDetails">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <local:Header/>
+        <Grid Grid.Row="1" Style="{StaticResource PageAnimation}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition MinHeight="100" Height="Auto" MaxHeight="160"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TabControl Background="#DCDCDC">
+                    <TabItem>
+                        <TabItem.Header>
+                            <TextBlock FontFamily="{StaticResource Lexend}" FontSize="15" FontWeight="Bold" Text="Galeria zdjęć"/>
+                        </TabItem.Header>
+                        <TabItem.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5, 5, 0, 0"/>
+                            </Style>
+                        </TabItem.Resources>
+                        <Grid x:Name="imagePanel">
+                        </Grid>
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            <TextBlock FontFamily="{StaticResource Lexend}" FontSize="15" FontWeight="Bold" Text="Opis produktu"/>
+                        </TabItem.Header>
+                        <TabItem.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5, 5, 0, 0"/>
+                            </Style>
+                        </TabItem.Resources>
+                        <ScrollViewer Padding="5" VerticalScrollBarVisibility="Auto" Height="Auto">
+                            <StackPanel>
+                                <Border CornerRadius="15" Background="#9E9E9E" HorizontalAlignment="Left" Padding="7, 2" Margin="0, 5" x:Name="bestFeatureBorder" Visibility="Collapsed">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="Images/star.png" Width="20"/>
+                                        <Label x:Name="bestFeature" FontWeight="Bold" Foreground="White" FontFamily="{StaticResource Lexend}" FontSize="15"/>
+                                    </StackPanel>
+                                </Border>
+                                <TextBlock FontSize="15" x:Name="description" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem x:Name="productProperties">
+                        <TabItem.Header>
+                            <TextBlock FontFamily="{StaticResource Lexend}" FontSize="15" FontWeight="Bold" Text="Dane techniczne"/>
+                        </TabItem.Header>
+                        <TabItem.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5, 5, 0, 0"/>
+                            </Style>
+                        </TabItem.Resources>
+                        <FlowDocumentScrollViewer VerticalScrollBarVisibility="Auto">
+                            <FlowDocument ColumnWidth="999999" PagePadding="0">
+                                <Table CellSpacing="5" FontFamily="Arial">
+                                    <Table.Columns>
+                                        <TableColumn Width="*"/>
+                                        <TableColumn Width="*"/>
+                                    </Table.Columns>
+                                    <TableRowGroup x:Name="rowGroup">
+                                        <TableRow Background="White">
+                                            <TableCell TextAlignment="Right" Padding="5">
+                                                <Paragraph FontWeight="Bold">Parametr</Paragraph>
+                                            </TableCell>
+                                            <TableCell TextAlignment="Left" Padding="5">
+                                                <Paragraph FontWeight="Bold">Wartość</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableRowGroup>
+                                </Table>
+                            </FlowDocument>
+                        </FlowDocumentScrollViewer>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <Grid Grid.Row="1" Background="Dodgerblue">
+                <Canvas ClipToBounds="True">
+                    <Polygon Points="20,20 100,20 60,89.28" Fill="#3399ff" RenderTransformOrigin=".5, .5">
+                        <Polygon.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="150"/>
+                                <TranslateTransform Y="20"/>
+                            </TransformGroup>
+                        </Polygon.RenderTransform>
+                    </Polygon>
+                    <Polygon Points="20,20 100,20 60,89.28" Fill="#3399ff" RenderTransformOrigin=".5, .5">
+                        <Polygon.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="70"/>
+                                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+                                <TranslateTransform Y="-35" X="130"/>
+                            </TransformGroup>
+                        </Polygon.RenderTransform>
+                    </Polygon>
+                    <Polygon Points="20,20 100,20 60,89.28" Fill="#3399ff" RenderTransformOrigin=".5, .5">
+                        <Polygon.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="10"/>
+                                <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                <TranslateTransform Y="30" X="230"/>
+                            </TransformGroup>
+                        </Polygon.RenderTransform>
+                    </Polygon>
+                    <Polygon Points="20,20 100,20 60,89.28" Fill="#3399ff" RenderTransformOrigin=".5, .5">
+                        <Polygon.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="40"/>
+                                <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
+                                <TranslateTransform Y="-15" X="370"/>
+                            </TransformGroup>
+                        </Polygon.RenderTransform>
+                    </Polygon>
+                </Canvas>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer MaxHeight="160" VerticalScrollBarVisibility="Auto" Padding="5">
+                            <StackPanel>
+                                <TextBlock TextWrapping="Wrap" FontFamily="{StaticResource Lexend}" x:Name="name" FontSize="17" FontWeight="Bold" Foreground="WhiteSmoke" Padding="10"/>
+                                <WrapPanel Orientation="Horizontal" Margin="10, 0, 10, 10">
+                                    <Image Source="Images/info_gold.png" Width="15"/>
+                                    <TextBlock FontWeight="Bold" Foreground="Gold" x:Name="id" FontSize="13" Padding="2" Margin="3, 0, 0, 0" TextWrapping="Wrap"/>
+                                </WrapPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" x:Name="pricePanel" Cursor="">
+                        <Button HorizontalAlignment="Center" Padding="8" FontSize="15" Foreground="White" Background="DarkBlue" FontWeight="Bold" BorderThickness="0" Cursor="Hand" x:Name="addToCart" Click="AddToCart_Click" Tag="addToCart">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="Images/cart.png" Margin="0, 0, 5, 0"/>
+                                    <TextBlock Text="DODAJ DO KOSZYKA" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <TextBlock FontWeight="Bold" x:Name="quantity" FontFamily="{StaticResource Lexend}" Padding="2"/>
+                        <TextBlock FontWeight="Bold" x:Name="guarantee" Visibility="Collapsed" FontFamily="{StaticResource Lexend}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                        <TextBlock Text="7 499,99" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Right" Margin="0, 0, 10, 0" TextDecorations="Strikethrough" Visibility="Collapsed" x:Name="oldPrice"/>
+                        <Grid Height="70" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.RowSpan="2" FontWeight="Bold" FontSize="50" Margin="5, 0" x:Name="PriceZl"/>
+                        <TextBlock Grid.Column="1" FontWeight="Bold" FontSize="20" VerticalAlignment="Bottom" x:Name="PriceGr"/>
+                        <TextBlock Text="zł" Grid.Column="1" Grid.Row="1" FontWeight="Bold" FontSize="20" VerticalAlignment="Top"/>
+                    </Grid>
+                    </StackPanel>
+                    
+                </Grid>
+            </Grid>
+        </Grid>
+        <StatusBar Grid.Row="2" Height="30" x:Name="statusBar" Visibility="Collapsed">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem>
+                <TextBlock Text="Narzędzia administracyjne"/>
+            </StatusBarItem>
+            <Separator Grid.Column="2"/>
+            <StatusBarItem Grid.Column="3" Padding="0" >
+                <Button Content="Usuń" Background="Transparent" BorderThickness="0" Margin="0" Padding="5, 0" Cursor="Hand" Click="ButtonDelete_Click" />
+            </StatusBarItem>
+            <Separator Grid.Column="4"/>
+            <StatusBarItem Grid.Column="5" Padding="0">
+                <Button Content="Edytuj" Background="Transparent" BorderThickness="0" Margin="0" Padding="5, 0" Cursor="Hand" Click="ButtonEdit_Click"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Page>

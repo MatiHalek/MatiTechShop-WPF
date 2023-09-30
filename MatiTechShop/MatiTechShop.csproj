@@ -1,0 +1,108 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows10.0.22621.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>logo_small.ico</ApplicationIcon>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>1.1.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\account.png" />
+    <None Remove="Images\back.png" />
+    <None Remove="Images\cart.png" />
+    <None Remove="Images\cart2.png" />
+    <None Remove="Images\close.png" />
+    <None Remove="Images\close_red.png" />
+    <None Remove="Images\delete.png" />
+    <None Remove="Images\forward.png" />
+    <None Remove="Images\help.png" />
+    <None Remove="Images\info.png" />
+    <None Remove="Images\info_gold.png" />
+    <None Remove="Images\listIcon3D.png" />
+    <None Remove="Images\login.png" />
+    <None Remove="Images\logout.png" />
+    <None Remove="Images\logo_full.png" />
+    <None Remove="Images\logo_small.png" />
+    <None Remove="Images\manage.png" />
+    <None Remove="Images\minus.png" />
+    <None Remove="Images\more.png" />
+    <None Remove="Images\notes.png" />
+    <None Remove="Images\onlineShop.jpg" />
+    <None Remove="Images\plus.png" />
+    <None Remove="Images\profile.png" />
+    <None Remove="Images\register.png" />
+    <None Remove="Images\round_create_white_24dp.png" />
+    <None Remove="Images\star.png" />
+    <None Remove="Images\verified.png" />
+    <None Remove="Images\verifiedOwner.png" />
+    <None Remove="Lexend-VariableFont_wght.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="logo_small.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.5" />
+  </ItemGroup>
+  <ItemGroup>
+   <Resource Include="Fonts\Lexend-Black.ttf" />
+   <Resource Include="Fonts\Lexend-Bold.ttf" />
+   <Resource Include="Fonts\Lexend-ExtraBold.ttf" />
+   <Resource Include="Fonts\Lexend-ExtraLight.ttf" />
+   <Resource Include="Fonts\Lexend-Light.ttf" />
+   <Resource Include="Fonts\Lexend-Medium.ttf" />
+   <Resource Include="Fonts\Lexend-Regular.ttf" />
+   <Resource Include="Fonts\Lexend-SemiBold.ttf" />
+   <Resource Include="Fonts\Lexend-Thin.ttf" />
+   <Resource Include="Images\account.png" />
+   <Resource Include="Images\back.png" />
+   <Resource Include="Images\cart.png" />
+   <Resource Include="Images\cart2.png" />
+   <Resource Include="Images\close.png" />
+   <Resource Include="Images\close_red.png" />
+   <Resource Include="Images\delete.png" />
+   <Resource Include="Images\help.png" />
+   <Resource Include="Images\info.png" />
+   <Resource Include="Images\forward.png" />
+   <Resource Include="Images\info_gold.png" />
+   <Resource Include="Images\listIcon3D.png" />
+   <Resource Include="Images\login.png" />
+   <Resource Include="Images\logout.png" />
+   <Resource Include="Images\logo_full.png" />
+   <Resource Include="Images\logo_small.png" />
+   <Resource Include="Images\manage.png" />
+   <Resource Include="Images\minus.png" />
+   <Resource Include="Images\more.png" />
+   <Resource Include="Images\notes.png" />
+   <Resource Include="Images\onlineShop.jpg" />
+   <Resource Include="Images\plus.png" />
+   <Resource Include="Images\profile.png" />
+   <Resource Include="Images\register.png" />
+   <Resource Include="Images\round_create_white_24dp.png" />
+   <Resource Include="Images\star.png" />
+   <Resource Include="Images\verified.png" />
+   <Resource Include="Images\verifiedOwner.png" />
+   <Resource Include="Lexend-VariableFont_wght.ttf">
+     <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+   </Resource>
+ </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,19 @@
+﻿<Window x:Class="MatiTechShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatiTechShop"
+        mc:Ignorable="d"
+        Title="MatiTechShop - wspaniałe oferty!" Height="600" Width="900" MinWidth="300" MinHeight="250" UseLayoutRounding="True" WindowStartupLocation="CenterScreen" x:Name="window" ResizeMode="CanResizeWithGrip" Background="#0000FF" Loaded="Window_Loaded">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="1" CornerRadius="10" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="5"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Frame Source="MainPage.xaml" Grid.Row="1" NavigationUIVisibility="Hidden" x:Name="mainFrame"/>
+    </Grid>
+</Window>

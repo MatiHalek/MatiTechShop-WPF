@@ -1,0 +1,221 @@
+﻿<Window x:Class="MatiTechShop.AddOrEditProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatiTechShop"
+        mc:Ignorable="d"
+        Title="Dodaj nowy produkt - MatiTechShop" Height="450" Width="800" MinWidth="400" MinHeight="200" x:Name="page">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="5" Background="White">
+        <StackPanel>
+            <GroupBox Background="#DCDCDC">
+                <GroupBox.Header>
+                    <TextBlock Text="Ogólne" Foreground="DodgerBlue" FontSize="17" FontFamily="Arial" FontWeight="Bold"/>
+                </GroupBox.Header>
+                <StackPanel>
+                    <Label Content="Nazwa produktu:" Margin="3" FontSize="16" FontWeight="Bold" FontFamily="{StaticResource Lexend}"/>
+                    <TextBox x:Name="name" Margin="3" FontSize="15" MaxLength="100" Padding="3">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                        <Border CornerRadius="5" BorderThickness="1" Visibility="Collapsed" BorderBrush="#E6DC3545" HorizontalAlignment="Left" Background="#E6DC3545" x:Name="nameError" Margin="3, 0, 0, 5">
+                            <TextBlock Text="Proszę podać nazwę produktu." Opacity="0.9" HorizontalAlignment="Left" x:Name="nameTextBlock" Foreground="White" FontWeight="Bold" Padding="10, 5" FontSize="14" TextWrapping="Wrap"/>
+                        </Border>
+                        <Label Content="Kategorie:" Margin="3" FontSize="16" FontWeight="Bold" FontFamily="{StaticResource Lexend}"/>
+                        <ListBox x:Name="category" SelectionMode="Multiple" Padding="3" Margin="3">
+                            <ListBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
+                        <Border CornerRadius="5" BorderThickness="1" Visibility="Collapsed" BorderBrush="#E6DC3545" HorizontalAlignment="Left" Background="#E6DC3545" x:Name="categoryError" Margin="3, 0, 0, 5">
+                            <TextBlock Text="Proszę wybrać co najmniej jedną kategorię." Opacity="0.9" HorizontalAlignment="Left" x:Name="categoryTextBlock" Foreground="White" FontWeight="Bold" Padding="10, 5" FontSize="14" TextWrapping="Wrap"/>
+                        </Border>
+                        <Label Content="Opis produktu:" Margin="3" FontSize="16" FontWeight="Bold" FontFamily="{StaticResource Lexend}"/>
+                    <TextBox x:Name="description" Margin="3" FontSize="15" MaxLength="5000" Padding="3" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Height="100">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                        <Border CornerRadius="5" BorderThickness="1" Visibility="Collapsed" BorderBrush="#E6DC3545" HorizontalAlignment="Left" Background="#E6DC3545" x:Name="descriptionError" Margin="3, 0, 0, 5">
+                            <TextBlock Text="Proszę opisać produkt." Opacity="0.9" HorizontalAlignment="Left" x:Name="descriptionTextBlock" Foreground="White" FontWeight="Bold" Padding="10, 5" FontSize="14" TextWrapping="Wrap"/>
+                        </Border>
+                    </StackPanel>
+            </GroupBox>
+            <GroupBox Background="#DCDCDC">
+                <GroupBox.Header>
+                    <TextBlock Text="Zdjęcia" Foreground="DodgerBlue" FontSize="17" FontFamily="Arial" FontWeight="Bold"/>
+                </GroupBox.Header>
+                <StackPanel>
+                    <Label Content="Główne zdjęcie:" Margin="3" FontSize="16" FontWeight="Bold" FontFamily="{StaticResource Lexend}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="mainImage" Margin="3, 3, 0, 3" FontSize="15" Padding="3" IsReadOnly="True">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5, 0, 0, 5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                        <Button Grid.Column="1" Content="Wybierz" BorderBrush="DarkGreen" Cursor="Hand" x:Name="fileInput" Click="FileInput_Click" Background="#32CD32" Margin="0, 3, 3, 3" FontWeight="Bold" Foreground="White" Padding="7, 0" FontFamily="{StaticResource Lexend}">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="0, 5, 5, 0"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </Grid>
+                        <Border CornerRadius="5" BorderThickness="1" Visibility="Collapsed" BorderBrush="#E6DC3545" HorizontalAlignment="Left" Background="#E6DC3545" x:Name="imageError" Margin="3, 0, 0, 5">
+                            <TextBlock Text="Podana ścieżka jest niepoprawna." Opacity="0.9" HorizontalAlignment="Left" x:Name="imageTextBlock" Foreground="White" FontWeight="Bold" Padding="10, 5" FontSize="14" TextWrapping="Wrap"/>
+                        </Border>
+                    </StackPanel>
+            </GroupBox>
+            <GroupBox Background="#DCDCDC">
+                <GroupBox.Header>
+                    <TextBlock Text="Cena" Foreground="DodgerBlue" FontSize="17" FontFamily="Arial" FontWeight="Bold"/>
+                </GroupBox.Header>
+                <StackPanel>
+                    <Label Content="Cena [zł]:" Margin="3" FontSize="16" FontWeight="Bold" FontFamily="{StaticResource Lexend}"/>
+                    <TextBox x:Name="price" Margin="3" FontSize="15" Padding="3">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                        <Border CornerRadius="5" BorderThickness="1" Visibility="Collapsed" BorderBrush="#E6DC3545" HorizontalAlignment="Left" Background="#E6DC3545" x:Name="priceError" Margin="3, 0, 0, 5">
+                            <TextBlock Text="Proszę podać poprawną cenę produktu z zakresu od 0,01 do 999999,99." Opacity="0.9" HorizontalAlignment="Left" x:Name="priceTextBlock" Foreground="White" FontWeight="Bold" Padding="10, 5" FontSize="14" TextWrapping="Wrap"/>
+                        </Border>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                        <CheckBox VerticalContentAlignment="Center" x:Name="checkbox" Checked="Checkbox_Checked" Unchecked="Checkbox_Unchecked"/>
+                        <Label Content="Produkt na promocji" FontWeight="Bold" FontSize="15" MouseLeftButtonDown="Label_MouseLeftButtonDown" Cursor="Hand"/>
+                    </StackPanel>
+                    <Label Content="Cena promocyjna:" Margin="3" FontSize="16" FontWeight="Bold" FontFamily="{StaticResource Lexend}"/>
+                    <TextBox x:Name="promotion" Margin="3" FontSize="15" Padding="3" IsEnabled="False">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                        <Border CornerRadius="5" BorderThickness="1" Visibility="Collapsed" BorderBrush="#E6DC3545" HorizontalAlignment="Left" Background="#E6DC3545" x:Name="promotionError" Margin="3, 0, 0, 5">
+                            <TextBlock Text="Proszę podać poprawną cenę promocyjną (musi być ona mniejsza od standardowej)." Opacity="0.9" HorizontalAlignment="Left" x:Name="promotionTextBlock" Foreground="White" FontWeight="Bold" Padding="10, 5" FontSize="14" TextWrapping="Wrap"/>
+                        </Border>
+                    </StackPanel>
+            </GroupBox>
+            <GroupBox Background="#DCDCDC">
+                <GroupBox.Header>
+                    <TextBlock Text="Parametry" Foreground="DodgerBlue" FontSize="17" FontFamily="Arial" FontWeight="Bold"/>
+                </GroupBox.Header>
+                <StackPanel>
+                    <Label Content="Najlepsza cecha (opcjonalne):" Margin="3" FontSize="16" FontWeight="Bold" FontFamily="{StaticResource Lexend}"/>
+                    <TextBox x:Name="bestFeature" Margin="3" FontSize="15" Padding="3" MaxLength="30">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                        <Border CornerRadius="5" BorderThickness="1" Visibility="Collapsed" BorderBrush="#E6DC3545" HorizontalAlignment="Left" Background="#E6DC3545" x:Name="bestFeatureError" Margin="3, 0, 0, 5">
+                            <TextBlock Text="Podana wartość jest niepoprawna." Opacity="0.9" HorizontalAlignment="Left" x:Name="bestFeatureTextBlock" Foreground="White" FontWeight="Bold" Padding="10, 5" FontSize="14" TextWrapping="Wrap"/>
+                        </Border>
+                        <Label Content="Parametry:" Margin="3" FontSize="16" FontWeight="Bold" FontFamily="{StaticResource Lexend}"/>
+                    <DataGrid CanUserAddRows="True" HeadersVisibility="Column" HorizontalAlignment="Left" ColumnWidth="*" ItemsSource="{Binding}" CanUserDeleteRows="True" CanUserSortColumns="True" x:Name="dataGrid" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Parametr" Binding="{Binding Name}">
+                                    <DataGridTextColumn.EditingElementStyle>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="MaxLength" Value="100"/>
+                                        </Style>
+                                    </DataGridTextColumn.EditingElementStyle>
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Wartość" Binding="{Binding Value}">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                        <Border CornerRadius="5" BorderThickness="1" Visibility="Collapsed" BorderBrush="#E6DC3545" HorizontalAlignment="Left" Background="#E6DC3545" x:Name="dataGridError" Margin="3, 5, 0, 5">
+                            <TextBlock Text="Nie wszystkie pola są uzupełnione poprawnie lub nazwy parametrów się powtarzają." Opacity="0.9" HorizontalAlignment="Left" x:Name="dataGridTextBlock" Foreground="White" FontWeight="Bold" Padding="10, 5" FontSize="14" TextWrapping="Wrap"/>
+                        </Border>
+                    </StackPanel>
+            </GroupBox>
+            <GroupBox Background="#DCDCDC">
+                <GroupBox.Header>
+                    <TextBlock Text="Pozostałe" Foreground="DodgerBlue" FontSize="17" FontFamily="Arial" FontWeight="Bold"/>
+                </GroupBox.Header>
+                <StackPanel>
+                    <Label Content="Liczba dostępnych sztuk:" Margin="3" FontSize="16" FontWeight="Bold" FontFamily="{StaticResource Lexend}"/>
+                    <TextBox x:Name="quantity" Margin="3" FontSize="15" MaxLength="10" Padding="3">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                        <Border CornerRadius="5" BorderThickness="1" Visibility="Collapsed" BorderBrush="#E6DC3545" HorizontalAlignment="Left" Background="#E6DC3545" x:Name="quantityError" Margin="3, 0, 0, 5">
+                            <TextBlock Text="Ilość powinna być liczbą całkowitą z zakresu od 0 do 999 999 999." Opacity="0.9" HorizontalAlignment="Left" x:Name="quantityTextBlock" Foreground="White" FontWeight="Bold" Padding="10, 5" FontSize="14" TextWrapping="Wrap"/>
+                        </Border>
+                        <Label Content="Gwarancja produktu w miesiącach (opcjonalne):" Margin="3" FontSize="16" FontWeight="Bold" FontFamily="{StaticResource Lexend}"/>
+                    <TextBox x:Name="guarantee" Margin="3" FontSize="15" MaxLength="5" Padding="3">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                        <Border CornerRadius="5" BorderThickness="1" Visibility="Collapsed" BorderBrush="#E6DC3545" HorizontalAlignment="Left" Background="#E6DC3545" x:Name="guaranteeError" Margin="3, 0, 0, 5">
+                            <TextBlock Text="Liczba miesięcy gwarancji powinna być liczbą całkowitą z zakresu od 0 do 999 999." Opacity="0.9" HorizontalAlignment="Left" x:Name="guaranteeTextBlock" Foreground="White" FontWeight="Bold" Padding="10, 5" FontSize="14" TextWrapping="Wrap"/>
+                        </Border>
+                    </StackPanel>
+            </GroupBox>
+            
+        </StackPanel>
+    </ScrollViewer>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5" Grid.Row="1">
+                <Button Content="Zatwierdź" Cursor="Hand" Padding="8" Margin="4" FontSize="18" FontWeight="Bold" Width="100" FontFamily="Arial" Background="Green" BorderBrush="LawnGreen" Foreground="White" Click="Button_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="14" ShadowDepth="8" Color="#CCC"/>
+                    </Button.Effect>
+                </Button>
+                <Button Content="Anuluj"  Cursor="Hand" Padding="8" Margin="4" FontSize="18" FontWeight="Bold" Width="100" FontFamily="Arial" Background="Red" BorderBrush="Orange" Foreground="White" Click="Button_Click_Cancel">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="14" ShadowDepth="8" Color="#CCC"/>
+                    </Button.Effect>
+                </Button>
+            </StackPanel>
+    </Grid>
+    
+</Window>
